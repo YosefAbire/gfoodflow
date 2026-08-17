@@ -1,0 +1,39 @@
+from enum import StrEnum
+
+
+class UserRole(StrEnum):
+    SUPER_ADMIN = "SUPER_ADMIN"
+    ADMIN = "ADMIN"
+    DATA_MANAGER = "DATA_MANAGER"
+    RESEARCHER = "RESEARCHER"
+    ANALYST = "ANALYST"
+    AGRICULTURAL_OFFICER = "AGRICULTURAL_OFFICER"
+    FIELD_AGENT = "FIELD_AGENT"
+    VIEWER = "VIEWER"
+
+
+class AdminLevel(StrEnum):
+    COUNTRY = "COUNTRY"
+    REGION = "REGION"
+    ZONE = "ZONE"
+    WOREDA = "WOREDA"
+    KEBELE = "KEBELE"
+
+
+class CropType(StrEnum):
+    MAIZE = "MAIZE"
+    TEFF = "TEFF"
+    WHEAT = "WHEAT"
+    BARLEY = "BARLEY"
+    SORGHUM = "SORGHUM"
+    PULSES = "PULSES"
+    COFFEE = "COFFEE"
+    VEGETABLES = "VEGETABLES"
+
+
+class FoodSecurityLevel(StrEnum):
+    MINIMAL_IPC_1 = "MINIMAL_IPC_1"
+    STRESSED_IPC_2 = "STRESSED_IPC_2"
+    CRISIS_IPC_3 = "CRISIS_IPC_3"
+    EMERGENCY_IPC_4 = "EMERGENCY_IPC_4"
+    CATASTROPHE_IPC_5 = "CATASTROPHE_IPC_5"
