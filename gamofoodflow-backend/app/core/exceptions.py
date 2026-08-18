@@ -77,7 +77,7 @@ async def global_exception_handler(request: Request, exc: Exception) -> JSONResp
             "error": {
                 "code": "INTERNAL_SERVER_ERROR",
                 "message": "An unexpected error occurred on the server.",
-                "details": {"raw": str(exc)} if request.app.state.settings.DEBUG else {},
+                "details": {"raw": str(exc)},
             }
         },
     )

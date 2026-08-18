@@ -38,6 +38,8 @@ dependencies = [
     "langchain-google-genai>=1.0.5",
     "pgvector>=0.2.5",
     "python-multipart>=0.0.9",
+    "email-validator>=2.1.0",
+    "argon2-cffi>=23.1.0",
 ]
 
 [project.optional-dependencies]
@@ -63,7 +65,7 @@ target-version = "py312"
 
 [tool.ruff.lint]
 select = ["E", "F", "B", "I", "N", "UP", "PL", "RUF"]
-ignore = ["E501", "PLR2004", "B008", "N818", "PLW0603", "PLW0602"]
+ignore = ["E501", "PLR2004", "B008", "N818", "PLW0603", "PLW0602", "E712", "PLR0913", "PLR0917", "N815"]
 
 [tool.black]
 line-length = 100

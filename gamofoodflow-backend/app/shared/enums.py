@@ -21,14 +21,17 @@ class AdminLevel(StrEnum):
 
 
 class CropType(StrEnum):
-    MAIZE = "MAIZE"
-    TEFF = "TEFF"
-    WHEAT = "WHEAT"
-    BARLEY = "BARLEY"
-    SORGHUM = "SORGHUM"
-    PULSES = "PULSES"
-    COFFEE = "COFFEE"
-    VEGETABLES = "VEGETABLES"
+    MAIZE = "Maize"
+    BANANA = "Banana"
+    MANGO = "Mango"
+    ENSET = "Enset"
+    TEFF = "Teff"
+    WHEAT = "Wheat"
+    BARLEY = "Barley"
+    SORGHUM = "Sorghum"
+    PULSES = "Pulses"
+    COFFEE = "Coffee"
+    VEGETABLES = "Vegetables"
 
 
 class FoodSecurityLevel(StrEnum):
@@ -37,3 +40,18 @@ class FoodSecurityLevel(StrEnum):
     CRISIS_IPC_3 = "CRISIS_IPC_3"
     EMERGENCY_IPC_4 = "EMERGENCY_IPC_4"
     CATASTROPHE_IPC_5 = "CATASTROPHE_IPC_5"
+
+
+class WeatherStationStatus(StrEnum):
+    ACTIVE = "ACTIVE"
+    INACTIVE = "INACTIVE"
+    MAINTENANCE = "MAINTENANCE"
+
+
+class DroughtSeverity(StrEnum):
+    NORMAL = "NORMAL"
+    WATCH = "WATCH"
+    MODERATE = "MODERATE"
+    SEVERE = "SEVERE"
+    EXTREME = "EXTREME"
+

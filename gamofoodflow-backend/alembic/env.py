@@ -7,6 +7,11 @@ from sqlalchemy.ext.asyncio import async_engine_from_config
 
 from app.core.config import settings
 from app.core.database import Base
+from app.modules.agriculture.infrastructure.models import CollectionCenterModel, FarmModel, FarmerModel, FieldModel, YieldRecordModel
+from app.modules.geography.infrastructure.models import AdministrativeBoundaryModel
+from app.modules.identity.infrastructure.models import AuditLogModel, OrganizationModel, PermissionModel, RoleModel, UserModel
+from app.modules.logistics.infrastructure.models import LogisticsBottleneckModel, ShipmentModel
+from app.modules.markets.infrastructure.models import CommodityPriceModel, MarketNodeModel
 
 config = context.config
 

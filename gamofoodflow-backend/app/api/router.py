@@ -1,8 +1,40 @@
 from fastapi import APIRouter
 
 from app.api.v1 import health
+from app.modules.agriculture.router import router as agriculture_router
+from app.modules.food_security.router import router as food_security_router
+from app.modules.geography.router import router as geography_router
+from app.modules.identity.router import router as identity_router
+from app.modules.intelligence.router import router as intelligence_router
+from app.modules.logistics.router import router as logistics_router
+from app.modules.markets.router import router as markets_router
+from app.modules.weather.router import router as weather_router
 
 api_router = APIRouter()
 
 # Include health router
-api_router.include_router(health.router, prefix="/health", tags=["Health"])
+api_router.include_router(health.router, prefix="/health", tags=["Health & Observability"])
+
+# Include geography router
+api_router.include_router(geography_router, prefix="/geography", tags=["Geography & Spatial Boundaries"])
+
+# Include identity & auth router
+api_router.include_router(identity_router, tags=["Identity, Authentication & Organizations"])
+
+# Include agriculture router
+api_router.include_router(agriculture_router, prefix="/agriculture", tags=["Agriculture & Collection Centers"])
+
+# Include markets router
+api_router.include_router(markets_router, prefix="/markets", tags=["Food Prices & Market Intelligence"])
+
+# Include logistics router
+api_router.include_router(logistics_router, prefix="/logistics", tags=["Logistics & Supply Chain"])
+
+# Include intelligence & AI router
+api_router.include_router(intelligence_router, prefix="/intelligence", tags=["AI Insights & Scenario Simulation"])
+
+# Include food security engine router
+api_router.include_router(food_security_router, prefix="/food-security", tags=["Food Security Engine"])
+
+# Include weather router
+api_router.include_router(weather_router, prefix="/weather", tags=["Weather & Climate Intelligence"])
