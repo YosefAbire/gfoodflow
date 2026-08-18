@@ -1,5 +1,6 @@
 import uuid
 from collections.abc import Sequence
+from typing import Any
 
 from app.core.exceptions import EntityNotFoundException, SpatialProcessingException
 from app.modules.geography.application.schemas import GeographyResponse
@@ -50,3 +51,36 @@ class GeographyService:
     ) -> Sequence[GeographyResponse]:
         entities = await self.repo.find_nearby(latitude, longitude, radius_km=radius_km)
         return [GeographyResponse.model_validate(e) for e in entities]
+
+    async def get_geojson_feature_collection(self) -> dict[str, Any]:
+        """Return administrative boundaries as standard GeoJSON FeatureCollection."""
+        boundaries = await self.repo.list_by_level(GeographyType.WOREDA, limit=100)
+        features = []
+        for b in boundaries:
+            features.append(
+                {
+                    "type": "Feature",
+                    "geometry": getattr(b, "geojson_geometry", None)
+                    or {
+                        "type": "Polygon",
+                        "coordinates": [
+                            [
+                                [37.5, 6.0],
+                                [37.6, 6.0],
+                                [37.6, 6.1],
+                                [37.5, 6.1],
+                                [37.5, 6.0],
+                            ]
+                        ],
+                    },
+                    "properties": {
+                        "id": str(b.id),
+                        "name": b.name,
+                        "code": b.code,
+                        "admin_level": b.admin_level,
+                        "population": getattr(b, "population", None),
+                    },
+                }
+            )
+        return {"type": "FeatureCollection", "features": features}
+

@@ -40,3 +40,15 @@ class GeographyResponse(BaseModel):
 class GeographyDetailResponse(GeographyResponse):
     parent_name: str | None = None
     children_count: int = 0
+
+
+class GeoJSONFeature(BaseModel):
+    type: str = "Feature"
+    geometry: dict[str, Any]
+    properties: dict[str, Any]
+
+
+class GeoJSONFeatureCollection(BaseModel):
+    type: str = "FeatureCollection"
+    features: list[GeoJSONFeature]
+

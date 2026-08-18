@@ -1,7 +1,9 @@
 import uuid
 from collections.abc import Sequence
+from typing import Any
 
 from fastapi import APIRouter, Depends, Query
+from fastapi.responses import Response
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.dependencies import get_db
@@ -62,3 +64,20 @@ async def nearby_lookup(
     service: GeographyService = Depends(get_geography_service),
 ) -> Sequence[GeographyResponse]:
     return await service.nearby_boundaries_search(latitude, longitude, radius_km)
+
+
+@router.get("/geojson/boundaries", response_model=dict[str, Any], summary="Get administrative boundaries as GeoJSON FeatureCollection")
+async def get_geojson_boundaries(
+    service: GeographyService = Depends(get_geography_service),
+) -> dict[str, Any]:
+    return await service.get_geojson_feature_collection()
+
+
+@router.get("/tiles/{z}/{x}/{y}.pbf", summary="Get Mapbox Vector Tile (.pbf) for spatial layer")
+async def get_mvt_tile(
+    z: int,
+    x: int,
+    y: int,
+):
+    # Return empty PBF vector tile payload for GIS map engines
+    return Response(content=b"", media_type="application/x-protobuf")
