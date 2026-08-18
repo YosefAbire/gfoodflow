@@ -3,9 +3,9 @@ from celery import Celery
 from app.core.config import settings
 
 celery_app = Celery(
-    "gamofoodflow_workers",
-    broker=settings.resolved_celery_broker_url,
-    backend=settings.resolved_celery_result_backend,
+    "gamofoodflow",
+    broker=settings.CELERY_BROKER_URL,
+    backend=settings.CELERY_RESULT_BACKEND,
 )
 
 celery_app.conf.update(
@@ -14,11 +14,4 @@ celery_app.conf.update(
     result_serializer="json",
     timezone="UTC",
     enable_utc=True,
-    task_track_started=True,
 )
-
-
-@celery_app.task(name="ping")
-def ping_task() -> str:
-    """Simple ping task to verify worker responsiveness."""
-    return "pong"
