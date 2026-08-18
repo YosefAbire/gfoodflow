@@ -2,10 +2,12 @@ from fastapi import APIRouter
 
 from app.api.v1 import health
 from app.modules.agriculture.router import router as agriculture_router
+from app.modules.alerts.router import router as alerts_router
 from app.modules.food_security.router import router as food_security_router
 from app.modules.geography.router import router as geography_router
 from app.modules.identity.router import router as identity_router
 from app.modules.intelligence.router import router as intelligence_router
+from app.modules.knowledge.router import router as knowledge_router
 from app.modules.logistics.router import router as logistics_router
 from app.modules.markets.router import router as markets_router
 from app.modules.remote_sensing.router import router as remote_sensing_router
@@ -46,3 +48,9 @@ api_router.include_router(remote_sensing_router, prefix="/remote-sensing", tags=
 
 # Include soil router
 api_router.include_router(soil_router, prefix="/soil", tags=["Soil Intelligence"])
+
+# Include alerts router
+api_router.include_router(alerts_router, prefix="/alerts", tags=["Rule-Based Alerts & Escalation"])
+
+# Include RAG knowledge router
+api_router.include_router(knowledge_router, prefix="/knowledge", tags=["RAG & Vector Embeddings AI Gateway"])
