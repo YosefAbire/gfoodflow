@@ -8,6 +8,8 @@ from app.modules.identity.router import router as identity_router
 from app.modules.intelligence.router import router as intelligence_router
 from app.modules.logistics.router import router as logistics_router
 from app.modules.markets.router import router as markets_router
+from app.modules.remote_sensing.router import router as remote_sensing_router
+from app.modules.soil.router import router as soil_router
 from app.modules.weather.router import router as weather_router
 
 api_router = APIRouter()
@@ -38,3 +40,9 @@ api_router.include_router(food_security_router, prefix="/food-security", tags=["
 
 # Include weather router
 api_router.include_router(weather_router, prefix="/weather", tags=["Weather & Climate Intelligence"])
+
+# Include remote sensing router
+api_router.include_router(remote_sensing_router, prefix="/remote-sensing", tags=["Remote Sensing & Satellite Pipeline"])
+
+# Include soil router
+api_router.include_router(soil_router, prefix="/soil", tags=["Soil Intelligence"])
