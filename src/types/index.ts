@@ -348,4 +348,21 @@ export interface LogisticsOpportunityItem {
   description: string;
   suggestedAction: string;
 }
+export interface UserResponse {
+  id: string;
+  email: string;
+  full_name: string;
+  role: string;
+  organization_id?: string | null;
+  is_active: boolean;
+  is_superuser: boolean;
+}
 
+export interface OrganizationResponse {
+  id: string;
+  name: string;
+  code: string;
+  org_type: string;
+  contact_email?: string | null;
+  contact_phone?: string | null;
+}

@@ -43,7 +43,7 @@ export function Sidebar({ onOpenTransportModal, className = '' }: SidebarProps) 
 
   const isActive = (href: string) => {
     if (href === '/overview') {
-      return pathname === '/' || pathname === '/overview';
+      return pathname === '/overview';
     }
     return pathname.startsWith(href);
   };
