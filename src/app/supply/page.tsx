@@ -81,7 +81,7 @@ export default function SupplyPage() {
                         <span>{item.crop}</span>
                       </div>
                       <span className="font-extrabold text-slate-900 font-mono">
-                        {item.volumeTons.toLocaleString()}t
+                        {(item.volumeTons ?? 0).toLocaleString()}t
                       </span>
                     </div>
                     <div className="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
