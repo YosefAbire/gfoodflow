@@ -29,7 +29,7 @@ def upgrade() -> None:
         sa.Column('elevation_m', sa.Float(), nullable=True),
         sa.Column('status', sa.String(length=50), nullable=False),
         sa.Column('kebele_id', postgresql.UUID(as_uuid=True), nullable=True),
-        sa.Column('geom', geoalchemy2.types.Geometry(geometry_type='POINT', srid=4326), nullable=True),
+        sa.Column('geom', geoalchemy2.types.Geometry(geometry_type='POINT', srid=4326, spatial_index=False), nullable=True),
         sa.Column('created_at', sa.DateTime(timezone=True), nullable=False),
         sa.Column('updated_at', sa.DateTime(timezone=True), nullable=False),
         sa.Column('is_deleted', sa.Boolean(), nullable=False),

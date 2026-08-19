@@ -1,3 +1,4 @@
+import { fetchWithFallback } from '@/lib/apiClient';
 import {
   DEMO_SHIPMENTS,
   DEMO_ROUTE_PERFORMANCE,
@@ -14,16 +15,39 @@ import {
 } from '@/data/logisticsData';
 
 export const logisticsService = {
-  getShipments: async () => DEMO_SHIPMENTS,
-  getRoutePerformance: async () => DEMO_ROUTE_PERFORMANCE,
-  getBottlenecks: async () => DEMO_LOGISTICS_BOTTLENECK,
-  getTransportDemand: async () => DEMO_TRANSPORT_DEMAND,
-  getCapacityDemandAreas: async () => DEMO_CAPACITY_DEMAND_AREAS,
-  getCapacityBottleneckAlerts: async () => DEMO_CAPACITY_BOTTLENECK_ALERTS,
-  getDemandVsCapacityTimeSeries: async () => DEMO_DEMAND_VS_CAPACITY_TIME_SERIES,
-  getDetailedShipments: async () => DEMO_DETAILED_SHIPMENTS,
-  getRouteMatrix: async () => DEMO_ROUTE_MATRIX,
-  getAlternativeRouteData: async () => DEMO_ALTERNATIVE_ROUTE_DATA,
-  getLogisticsRisks: async () => DEMO_LOGISTICS_RISKS,
-  getLogisticsOpportunities: async () => DEMO_LOGISTICS_OPPORTUNITIES,
+  getShipments: async () => 
+    fetchWithFallback('/logistics/shipments', DEMO_SHIPMENTS),
+
+  getRoutePerformance: async () => 
+    fetchWithFallback('/logistics/route-performance', DEMO_ROUTE_PERFORMANCE),
+
+  getBottlenecks: async () => 
+    fetchWithFallback('/logistics/bottlenecks', DEMO_LOGISTICS_BOTTLENECK),
+
+  getTransportDemand: async () => 
+    fetchWithFallback('/logistics/transport-demand', DEMO_TRANSPORT_DEMAND),
+
+  getCapacityDemandAreas: async () => 
+    fetchWithFallback('/logistics/capacity-demand-areas', DEMO_CAPACITY_DEMAND_AREAS),
+
+  getCapacityBottleneckAlerts: async () => 
+    fetchWithFallback('/logistics/bottleneck-alerts', DEMO_CAPACITY_BOTTLENECK_ALERTS),
+
+  getDemandVsCapacityTimeSeries: async () => 
+    fetchWithFallback('/logistics/demand-vs-capacity', DEMO_DEMAND_VS_CAPACITY_TIME_SERIES),
+
+  getDetailedShipments: async () => 
+    fetchWithFallback('/logistics/detailed-shipments', DEMO_DETAILED_SHIPMENTS),
+
+  getRouteMatrix: async () => 
+    fetchWithFallback('/logistics/route-matrix', DEMO_ROUTE_MATRIX),
+
+  getAlternativeRouteData: async () => 
+    fetchWithFallback('/logistics/alternative-routes', DEMO_ALTERNATIVE_ROUTE_DATA),
+
+  getLogisticsRisks: async () => 
+    fetchWithFallback('/logistics/risks', DEMO_LOGISTICS_RISKS),
+
+  getLogisticsOpportunities: async () => 
+    fetchWithFallback('/logistics/opportunities', DEMO_LOGISTICS_OPPORTUNITIES),
 };

@@ -30,7 +30,7 @@ def upgrade() -> None:
         sa.Column('parent_id', postgresql.UUID(as_uuid=True), nullable=True),
         sa.Column('area_sq_km', sa.Float(), nullable=True),
         sa.Column('population', sa.BigInteger(), nullable=True),
-        sa.Column('geom', geoalchemy2.types.Geometry(geometry_type='MULTIPOLYGON', srid=4326), nullable=True),
+        sa.Column('geom', geoalchemy2.types.Geometry(geometry_type='MULTIPOLYGON', srid=4326, spatial_index=False), nullable=True),
         sa.Column('created_at', sa.DateTime(timezone=True), nullable=False),
         sa.Column('updated_at', sa.DateTime(timezone=True), nullable=False),
         sa.Column('is_deleted', sa.Boolean(), nullable=False),
